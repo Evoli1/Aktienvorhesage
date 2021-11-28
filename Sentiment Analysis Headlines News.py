@@ -18,7 +18,7 @@ else:
 
 #Gathering FinViz Data
 finviz_url = 'https://finviz.com/quote.ashx?t='
-tickers = ['MSFT', 'GOOG', 'AAPL']
+tickers = ['MSFT', 'GOOG', 'AMZN', 'TSLA']
 
 news_tables = {}
 
