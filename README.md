@@ -1,6 +1,6 @@
 # Aktienvorhesage
 
-## Chartanalyse
+## Chartanalyse + ML
 Die Chartanalyse beinhaltet technische Indikatoren um Trends und Entwicklungen besser analysieren und auswerten zu können. Es werden folgende technische Indikatoren berücksichtigt:
 
 **Relative Stärke Index (RSI):**
