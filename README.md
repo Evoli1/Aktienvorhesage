@@ -3,7 +3,7 @@
 ## Chartanalyse
 Die Chartanalyse beinhaltet technische Indikatoren um Trends und Entwicklungen besser analysieren und auswerten zu können. Es werden folgende technische Indikatoren berücksichtigt:
 
-######Relative Stärke Index (RSI):
+###Relative Stärke Index (RSI):
     Der Relative Stärke Index ist als Indikator sehr interessant, weil er – vereinfacht ausgedrückt – die Intensität einer Kursbewegung misst. Diese wird in Relation zu den
     durchschnittlichen Auf- und Abwärtsbewegungen einer Vergleichsperiode gesetzt. Der RSI wird in der technischen Analyse sehr häufig eingesetzt. Hierbei schwanken seine   
     Ausprägungen auf einer Skala zwischen 0 und 100.
