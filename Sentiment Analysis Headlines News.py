@@ -1,6 +1,4 @@
 #Quelle: https://thecodex.me/blog/sentiment-analysis-tool-for-stock-trading
-pip install bs4
-
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -18,7 +16,7 @@ else:
 
 #Gathering FinViz Data
 finviz_url = 'https://finviz.com/quote.ashx?t='
-tickers = ['MSFT', 'GOOG', 'AMZN', 'TSLA']
+tickers = ['FB', 'AMZN', 'AAPL', 'NFLX', 'GOOG']
 
 news_tables = {}
 
