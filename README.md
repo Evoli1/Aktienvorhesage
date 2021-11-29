@@ -2,11 +2,11 @@
 
 ## Chartanalyse
 Die Chartanalyse beinhaltet technische Indikatoren um Trends und Entwicklungen besser analysieren und auswerten zu können. Es werden folgende technische Indikatoren berücksichtigt:
-######Relative Stärke Index (RSI):
+###Relative Stärke Index (RSI):
     Der Relative Stärke Index ist als Indikator sehr interessant, weil er – vereinfacht ausgedrückt – die Intensität einer Kursbewegung misst. Diese wird in Relation zu den
     durchschnittlichen Auf- und Abwärtsbewegungen einer Vergleichsperiode gesetzt. Der RSI wird in der technischen Analyse sehr häufig eingesetzt. Hierbei schwanken seine   
     Ausprägungen auf einer Skala zwischen 0 und 100.
-######Rate Of Change (ROC) / Momentum:
+###Rate Of Change (ROC) / Momentum:
     Das Momentum bezeichnet in der Chartanalyse ein Konzept zur Messung der Stärke einer Kursbewegung. Dazu wird die Preisänderung innerhalb eines bestimmten Zeitraums auf 
     verschiedene Weisen gemessen. Die Theorie dahinter: genau wie bei bewegter Masse (z.B. einem fahrenden Auto) laufen kraftvolle Kursbewegungen immer noch ein gutes Stück weiter 
     bevor sie eine Wende einleiten.
