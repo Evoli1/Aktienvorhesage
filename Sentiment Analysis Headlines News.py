@@ -45,11 +45,21 @@ df = pd.DataFrame(parsed_data, columns=['ticker', 'date', 'time', 'title'])
 #Applying Sentiment Analysis
 vader = SentimentIntensityAnalyzer()
 
-f = lambda title: vader.polarity_scores(title)['compound']
-df['compound'] = df['title'].apply(f)
-df['date'] = pd.to_datetime(df.date).dt.date
+#Displaying results in table
+df['compound'] = ''
+df['negative'] = ''
+df['neutral'] = ''
+df['positive'] = ''
+
+df['compound'] = df['title'].apply(lambda x: vader.polarity_scores(x)['compound'])
+df['negative'] = df['title'].apply(lambda x: vader.polarity_scores(x)['neg'])
+df['neutral'] = df['title'].apply(lambda x: vader.polarity_scores(x)['neu'])
+df['positive'] = df['title'].apply(lambda x: vader.polarity_scores(x)['pos'])
+
+print(df)
 
 #Visualizing the Results in MatPlotLib
+df['date'] = pd.to_datetime(df.date).dt.date
 plt.figure(figsize=(10,8))
 mean_df = df.groupby(['ticker', 'date']).mean().unstack()
 mean_df = mean_df.xs('compound', axis="columns").transpose()
