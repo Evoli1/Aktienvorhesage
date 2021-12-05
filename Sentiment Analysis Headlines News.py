@@ -41,6 +41,8 @@ for ticker, news_table in news_tables.items():
 
 df = pd.DataFrame(parsed_data, columns=['ticker', 'date', 'time', 'title'])
 
+# Einstellen der Spalte 'Datum' als Indexspalte
+df.set_index('date', inplace= True)
 
 #Applying Sentiment Analysis
 vader = SentimentIntensityAnalyzer()
