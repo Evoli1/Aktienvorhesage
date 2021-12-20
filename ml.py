@@ -1,8 +1,6 @@
-import yfinance as yf
-import pandas as pd
-import numpy as np
-import talib as ta
+import yfinance as yf, pandas as pd, numpy as np, talib as ta, matplotlib.pyplot as plt, math
 from datetime import date, timedelta
+from yfinance import tickers, ticker
 
 # Analysezeitraum Heute - 729 Tage 
 start = date.today() - timedelta(days=729)
@@ -72,3 +70,91 @@ y_pred = model.predict(X_test)
 
 # Vorhersagewahrscheinlichkeit des Modells
 print("Korrekte Vorhersage in %: ", accuracy_score(y_test, y_pred, normalize=True) * 100)
+
+# Testaktie erstellen
+test_stock = yf.download(
+    tickers = "NVDA", # NVDIA Aktie
+    start = start,
+    end = end,
+    interval = "1d"
+    )
+# Indikator Funktion auf Testaktie anwenden
+indikator(test_stock)
+test_stock.dropna(inplace=True)
+test_stock["Predicted"] = model.predict(test_stock[["RSI", "ROC", "%R", "OBV", "MACD", "MACD_SIGNAL", "MACD_HIST"]])
+
+# Kauf- und Verkaufssignale
+def buy_sell(asset):
+    BuyPrice = []
+    SellPrice = []
+    flag = -1
+    counter = 0
+    n = 5
+    
+    for i in range(len(asset)):
+        if asset["Predicted"][i] == 1 and counter == 0:
+            if flag != 1:
+                BuyPrice.append(asset["Close"][i])
+                SellPrice.append(np.nan)
+                flag = 1
+            else:
+                BuyPrice.append(np.nan)
+                SellPrice.append(np.nan)
+        elif asset["Predicted"][i] == -1 and counter == 0:
+            if flag != 0:
+                BuyPrice.append(np.nan)
+                SellPrice.append(asset["Close"][i])
+                flag = 0
+            else:
+                BuyPrice.append(np.nan)
+                SellPrice.append(np.nan)
+        else:
+            BuyPrice.append(np.nan)
+            SellPrice.append(np.nan)
+        
+        counter += 1
+        if counter == n:
+            counter = 0
+            
+    return(BuyPrice, SellPrice)
+
+buysell = buy_sell(test_stock)
+test_stock["Buy"] = buysell[0]
+test_stock["Sell"] = buysell[1]
+
+print(test_stock.head(10))
+
+# Grafische Darstellung der Signale
+plt.figure(figsize=(16,8))
+plt.scatter(test_stock.index, test_stock["Buy"], color = "green", label = "Buy", marker = "^", alpha = 1)
+plt.scatter(test_stock.index, test_stock["Sell"], color = "red", label = "Sell", marker = "v", alpha = 1)
+plt.plot(test_stock.index, test_stock["Close"], alpha= 0.5)
+plt.show()          
+
+# Kalkulation eines fiktiven Eingezahlten Betrages
+def calculation(asset, startUpCapital):
+    capital =  [startUpCapital]
+    num_stocks = 0
+    
+    for i in range(len(asset)):
+        # Kaufe Aktie wenn Buy-Signal festgestellt wird
+        if math.isnan(asset["Buy"][i]) == False:
+            num_stocks = capital[i]/asset["Close"][i]   # Kaufe Aktien zum Tagespreis
+            capital.append(num_stocks*asset["Close"][i])
+        # Verkaufe Aktie wenn Sell-Signal festgestellt wird
+        elif math.isnan(asset["Sell"][i]) == False:
+            cash = num_stocks * asset["Close"][i]
+            capital.append(cash)
+        # Kapital bleibt gleich wenn kein Ereignis auftritt
+        else:
+            capital.append(capital[i])
+    return capital
+
+test_stock_capital = calculation(test_stock, 100000)
+
+print(test_stock_capital)
+
+# Grafische Darstellung der Kalkulation
+plt.figure(figsize=(12.6, 4.6))
+plt.plot(test_stock_capital)
+plt.show()
