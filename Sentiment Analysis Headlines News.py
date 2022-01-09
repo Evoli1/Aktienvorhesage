@@ -71,9 +71,9 @@ mean_df = mean_df.xs('compound', axis="columns").transpose()
 mean_df.plot(kind="bar")
 plt.show()
 
-##Vorhersagemodell aufbauen, z.B für APPL
+##Vorhersagemodell aufbauen, z.B für FB
 parsed_text = []
-ticker = "APPL"
+ticker = "FB"
 for row in news_table.findAll('tr'):
 
         title = row.a.text
