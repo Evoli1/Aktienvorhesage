@@ -25,14 +25,6 @@ VADER (Valence Aware Dictionary and sEntiment Reasoner) ist ein lexikon- und reg
 
 VADER verwendet eine Kombination aus einem Sentiment-Lexikon. Dies ist eine Liste von lexikalischen Merkmalen (z. B. Wörtern), die im Allgemeinen entsprechend ihrer semantischen Ausrichtung entweder als positiv oder negativ gekennzeichnet werden.
 
-Ergebnis: Die Titel werden nach negativ, positiv, neutral und compound Punkt bewertet.
-
-"Compound" ist die Zusammensetzung von der drei anderen Punkten. Mit anderen Worten, er beschreibt die Gesamtstimmung des gesamten Textes. Falls ein Text einen positiven "compound"-Punkt hat, ist der Text eher positiv und umgekehrt.
-
-Ein Beispiel für eine Sentiment Analysis Ergebnis: 
-
-Top Hedge Funds are Selling These 10 Stocks------------------{'neg' : 0.0, 'neu' : 0.795, 'pos' : 0.205, 'compound' : 0.2023}
-
 ## Vorhersage Website
 
 **Streamlit**
