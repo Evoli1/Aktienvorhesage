@@ -33,5 +33,10 @@ Ein Beispiel für eine Sentiment Analysis Ergebnis:
 
 Top Hedge Funds are Selling These 10 Stocks------------------{'neg' : 0.0, 'neu' : 0.795, 'pos' : 0.205, 'compound' : 0.2023}
 
+## Vorhersage Website
 
+**Streamlit**
+Öffnen Local URL: 
+% streamlit hello
+% streamlit run app.py
 
