@@ -25,10 +25,3 @@ VADER (Valence Aware Dictionary and sEntiment Reasoner) ist ein lexikon- und reg
 
 VADER verwendet eine Kombination aus einem Sentiment-Lexikon. Dies ist eine Liste von lexikalischen Merkmalen (z. B. Wörtern), die im Allgemeinen entsprechend ihrer semantischen Ausrichtung entweder als positiv oder negativ gekennzeichnet werden.
 
-## Vorhersage Website
-
-**Streamlit**
-Öffnen Local URL: 
-% streamlit hello
-% streamlit run app.py
-
